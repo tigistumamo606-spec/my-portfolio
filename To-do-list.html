@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>TaskFlow | My To-Do List</title>
+  <style>
+    
+
+:root {
+  --bg: #160d24;
+  --surface: #241432;
+  --surface-light: #382047;
+  --border: #4b315d;
+  --blue: #c084fc;
+  --text: #fff7ff;
+  --muted: #c4b5d4;
+  --green: #86efac;
+  --red: #fb7185;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  
+background:
+  radial-gradient(circle at top right, #a855f733, transparent 40%),
+  var(--bg);
+
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: 92%;
+  max-width: 850px;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.brand span {
+  color: var(--blue);
+}
+
+.date {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.welcome {
+  padding: 38px 0 25px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.welcome h1 {
+  font-size: clamp(32px, 7vw, 48px);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.welcome h1 span {
+  color: var(--blue);
+}
+
+.subtitle {
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 38px;
+}
+
+.stat-card {
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.stat-card p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stat-card h2 {
+  font-size: 29px;
+  margin-top: 5px;
+}
+
+.task-section {
+  padding: 23px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.task-section > h2 {
+  margin-bottom: 18px;
+}
+
+.add-form {
+  display: flex;
+  gap: 10px;
+}
+
+.add-form input,
+.search-input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+}
+
+.add-form input:focus,
+.search-input:focus {
+  border-color: var(--blue);
+}
+
+.add-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 9px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+}
+
+.search-input {
+  margin-top: 14px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 19px 0 12px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  padding: 8px 14px;
+  background: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  color: var(--muted);
+}
+
+.filter.active {
+  background: #628bff22;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.message {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.task-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.task-check {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.task-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.task-item.done .task-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.delete-button {
+  border: none;
+  background: transparent;
+  color: var(--red);
+  font-size: 19px;
+  padding: 4px 8px;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.secondary-button,
+.danger-button {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-light);
+  color: var(--text);
+  font-size: 12px;
+}
+
+.danger-button {
+  color: var(--red);
+}
+
+.empty {
+  padding: 25px 10px;
+  text-align: center;
+  color: var(--muted);
+}
+
+footer {
+  padding: 28px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .task-section {
+    padding: 15px;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-card p {
+    font-size: 11px;
+  }
+
+  .stat-card h2 {
+    font-size: 24px;
+  }
+
+  .add-form {
+    flex-direction: column;
+  }
+
+  .add-button {
+    padding: 12px;
+  }
+
+  .task-item {
+    padding: 11px;
+  }
+}
+
+  </style>
+  
+</head>
+<body>
+
+  <main class="app">
+    <header class="header">
+      <div class="brand">✓ Task<span>Flow</span></div>
+      <div class="date" id="today"></div>
+    </header>
+
+    <section class="welcome">
+      <p class="eyebrow">YOUR PERSONAL TASK MANAGER</p>
+      <h1>Plan your day.<br><span>Get things done.</span></h1>
+      <p class="subtitle">Small steps lead to big achievements.</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat-card">
+        <p>Total tasks</p>
+        <h2 id="totalCount">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Active</p>
+        <h2 id="activeCount">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Completed</p>
+        <h2 id="completedCount">0</h2>
+      </div>
+    </section>
+
+    <section class="task-section">
+      <h2>My Tasks</h2>
+
+      <form id="taskForm" class="add-form">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="What do you need to do?"
+          maxlength="200"
+          required
+        >
+        <button type="submit" class="add-button">+ Add</button>
+      </form>
+
+      <input
+        type="search"
+        id="searchInput"
+        class="search-input"
+        placeholder="Search your tasks..."
+        aria-label="Search tasks"
+      >
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="active">Active</button>
+        <button class="filter" data-filter="completed">Completed</button>
+      </div>
+
+      <p id="message" class="message" aria-live="polite"></p>
+      <div id="taskList" class="task-list"></div>
+
+      <div class="bottom-actions">
+        <button id="clearCompleted" class="secondary-button">
+          Clear completed
+        </button>
+        <button id="clearAll" class="danger-button">
+          Clear all
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built with HTML, CSS and JavaScript ❤️</p>
+      <p>© <span id="year"></span> TaskFlow</p>
+    </footer>
+  </main>
+  <script>
+    
+"use strict";
+
+const taskForm = document.getElementById("taskForm");
+const taskInput = document.getElementById("taskInput");
+const searchInput = document.getElementById("searchInput");
+const taskList = document.getElementById("taskList");
+const message = document.getElementById("message");
+const filters = document.getElementById("filters");
+
+const totalCount = document.getElementById("totalCount");
+const activeCount = document.getElementById("activeCount");
+const completedCount = document.getElementById("completedCount");
+
+let tasks = loadTasks();
+let currentFilter = "all";
+
+// Show today's date.
+document.getElementById("today").textContent =
+  new Date().toLocaleDateString("en", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  });
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+// Load saved tasks from LocalStorage.
+function loadTasks() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem("taskFlowTasks") || "[]"
+    );
+
+    if (!Array.isArray(saved)) return [];
+
+    return saved.filter(task =>
+      Number.isSafeInteger(task.id) &&
+      typeof task.text === "string" &&
+      typeof task.completed === "boolean"
+    );
+  } catch (error) {
+    return [];
+  }
+}
+
+// Save tasks in the browser.
+function saveTasks() {
+  try {
+    localStorage.setItem("taskFlowTasks", JSON.stringify(tasks));
+  } catch (error) {
+    message.textContent = "Could not save tasks in this browser.";
+  }
+}
+
+// Create a new task.
+taskForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const text = taskInput.value.trim();
+
+  if (text === "") {
+    message.textContent = "Please enter a task.";
+    return;
+  }
+
+  tasks.unshift({
+    id: Date.now(),
+    text: text,
+    completed: false
+  });
+
+  saveTasks();
+  taskInput.value = "";
+  currentFilter = "all";
+  updateFilters();
+  renderTasks();
+  taskInput.focus();
+});
+
+// Mark a task complete or active.
+function toggleTask(id) {
+  tasks = tasks.map(task =>
+    task.id === id
+      ? { ...task, completed: !task.completed }
+      : task
+  );
+
+  saveTasks();
+  renderTasks();
+}
+
+// Delete one task.
+function deleteTask(id) {
+  tasks = tasks.filter(task => task.id !== id);
+  saveTasks();
+  renderTasks();
+}
+
+// Display the task list.
+function renderTasks() {
+  totalCount.textContent = tasks.length;
+  activeCount.textContent =
+    tasks.filter(task => !task.completed).length;
+  completedCount.textContent =
+    tasks.filter(task => task.completed).length;
+
+  const query = searchInput.value.trim().toLowerCase();
+
+  const visibleTasks = tasks.filter(task => {
+    const matchesSearch = task.text.toLowerCase().includes(query);
+
+    const matchesFilter =
+      currentFilter === "all" ||
+      (currentFilter === "active" && !task.completed) ||
+      (currentFilter === "completed" && task.completed);
+
+    return matchesSearch && matchesFilter;
+  });
+
+  if (visibleTasks.length === 0) {
+    taskList.innerHTML =
+      '<p class="empty">No tasks found. Add a new task!</p>';
+    message.textContent = "";
+    return;
+  }
+
+  message.textContent = `Showing ${visibleTasks.length} task(s).`;
+
+  taskList.innerHTML = visibleTasks.map(task => `
+    <div class="task-item ${task.completed ? "done" : ""}">
+      <input
+        type="checkbox"
+        class="task-check"
+        data-toggle="${task.id}"
+        ${task.completed ? "checked" : ""}
+        aria-label="Mark ${escapeHTML(task.text)} as completed"
+      >
+
+      <span class="task-text">${escapeHTML(task.text)}</span>
+
+      <button
+        class="delete-button"
+        data-delete="${task.id}"
+        aria-label="Delete task"
+      >×</button>
+    </div>
+  `).join("");
+}
+
+// Escape user text before displaying it as HTML.
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[character]);
+}
+
+// Handle task checkbox and delete clicks.
+taskList.addEventListener("click", function(event) {
+  const deleteButton = event.target.closest("[data-delete]");
+
+  if (deleteButton) {
+    deleteTask(Number(deleteButton.dataset.delete));
+  }
+});
+
+taskList.addEventListener("change", function(event) {
+  const checkbox = event.target.closest("[data-toggle]");
+
+  if (checkbox) {
+    toggleTask(Number(checkbox.dataset.toggle));
+  }
+});
+
+// Search tasks.
+searchInput.addEventListener("input", renderTasks);
+
+// Filter tasks.
+filters.addEventListener("click", function(event) {
+  const button = event.target.closest("[data-filter]");
+  if (!button) return;
+
+  currentFilter = button.dataset.filter;
+  updateFilters();
+  renderTasks();
+});
+
+function updateFilters() {
+  filters.querySelectorAll("[data-filter]").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.filter === currentFilter
+    );
+  });
+}
+
+// Remove completed tasks.
+document.getElementById("clearCompleted").addEventListener("click", function() {
+  tasks = tasks.filter(task => !task.completed);
+  saveTasks();
+  renderTasks();
+});
+
+// Remove all tasks after confirmation.
+document.getElementById("clearAll").addEventListener("click", function() {
+  if (tasks.length === 0) return;
+
+  const confirmed = confirm("Delete all tasks? This cannot be undone.");
+
+  if (confirmed) {
+    tasks = [];
+    saveTasks();
+    renderTasks();
+  }
+});
+
+// Initial display.
+renderTasks();
+
+  </script>
+
+</body>
+</html>
