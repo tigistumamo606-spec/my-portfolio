@@ -450,6 +450,39 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+    #skills {
+  padding: 60px 20px;
+}
+
+#skills h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+#skills h2 span {
+  color: #1e88ff;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-tag {
+  padding: 10px 18px;
+  border: 1px solid #1e88ff;
+  border-radius: 999px;
+  background: rgba(30, 136, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.skills-note {
+  margin-top: 24px;
+  color: #9aa7bd;
+    }
 
 
   </style>
@@ -503,34 +536,20 @@ I'm always learning and improving by building real projects, like an electronics
 I'm looking to build websites for small businesses and people who need a simple, professional online presence. If you have an idea, I'd love to help bring it to life.
       </p>
     </section>
+    <section id="skills">
+  <h2>My <span>Skills</span></h2>
 
-    <section class="section" id="skills">
-      <p class="section-label"></p>
-      <h2>My <span>Skills</span></h2>
+  <div class="skills-grid">
+    <span class="skill-tag">HTML</span>
+    <span class="skill-tag">CSS</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Responsive Design</span>
+    <span class="skill-tag">Git & GitHub</span>
+    <span class="skill-tag">GitHub Pages</span>
+  </div>
 
-      <div class="skills-grid">
-        <div class="skill">
-          <div class="skill-top"><span>HTML</span><span>95%</span></div>
-          <div class="progress"><div style="width: 95%;"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top"><span>CSS</span><span>95%</span></div>
-          <div class="progress"><div style="width:95%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top"><span>JavaScript</span><span>93%</span></div>
-          <div class ="progress"><div style="width:93%"></div></div>
-        </div>
-        <div class="skill">
-          <div class="skill-top"><span>Responsive Design</span><span>90%</span></div>
-    <div class ="progress"><div style="width:90%"></div></div>
-        </div>
-      </div>
-      <p class="small-note">
-        These are example self-assessments. 
-      </p>
+  <p class="skills-note">Currently learning: React and backend basics.</p>
     </section>
-
     <section class="section" id="projects">
       <p class="section-label">SOME OF MY WORK</p>
       <h2>My <span>Projects</span></h2>
