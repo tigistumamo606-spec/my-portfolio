@@ -3,712 +3,499 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tigistu's personal web development portfolio">
-  <title>Tigistu | Web Developer</title>
-  <style>
-    
-/* GENERAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-:root {
-  --background: #07111f;
-  --card: #101e31;
-  --text: #f1f5f9;
-  --muted: #a9b7ca;
-  --blue: #1685ff;
-  --border: #263950;
-}
+  <meta name="description" content="Tigistu Mamo - Freelance Web Developer. I build modern, responsive and professional websites for businesses.">
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
-}
+  <meta name="theme-color" content="#080d1a">
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
-  color: var(--text);
-  line-height: 1.7;
-}
+  <title>Tigistu Mamo | Freelance Web Developer</title>
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-span {
-  color: var(--blue);
-}
-
-button, input, textarea {
-  font: inherit;
-}
-
-/* NAVIGATION */
-.navbar {
-  min-height: 75px;
-  padding: 15px 8%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background: #091526;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-size: 26px;
-  font-weight: 800;
-}
-
-.navbar nav {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.navbar nav a {
-  color: var(--muted);
-  transition: color 0.3s;
-}
-
-.navbar nav a:hover {
-  color: var(--blue);
-}
-
-.menu-btn {
-  display: none;
-  color: white;
-  background: transparent;
-  border: 0;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* HERO */
-.hero {
-  min-height: 510px;
-  padding: 65px 8%;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 45px;
-  background:
-    radial-gradient(ellipse at top right, #112f55, transparent 65%);
-}
-
-.welcome, .section-label {
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.hero h1 {
-  font-size: clamp(36px, 5vw, 58px);
-  line-height: 1.2;
-  margin: 14px 0;
-}
-
-.hero h2 {
-  font-size: 25px;
-  margin-bottom: 15px;
-}
-
-.hero-text > p:not(.welcome) {
-  color: var(--muted);
-  max-width: 500px;
-}
-
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 11px 22px;
-  color: white;
-  background: var(--blue);
-  border: 1px solid var(--blue);
-  border-radius: 7px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  background: #0068d9;
-}
-
-.btn-outline {
-  background: transparent;
-}
-
-.hero-image {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image img {
-  width: 100%;
-  max-width: 340px;
-  height: 380px;
-  object-fit: cover;
-  object-position: center 25%;
-  border-radius: 22px;
-  border: 2px solid #244b77;
-  box-shadow: 0 15px 50px #0005;
-}
-
-/* SECTIONS */
-.section {
-  padding: 75px 8%;
-  border-top: 1px solid var(--border);
-}
-
-.section h2 {
-  font-size: 34px;
-  margin: 8px 0 22px;
-}
-
-.section > p:not(.section-label):not(.small-note) {
-  color: var(--muted);
-  max-width: 760px;
-}
-
-.small-note {
-  color: var(--muted);
-  font-size: 13px;
-  margin-top: 20px;
-}
-
-/* SKILLS */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 25px;
-  max-width: 850px;
-}
-
-.skill-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.skill-top span:last-child {
-  color: var(--muted);
-}
-
-.progress {
-  height: 8px;
-  background: #263950;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress div {
-  height: 100%;
-  background: linear-gradient(90deg, #0875e8, #55c7ff);
-  border-radius: 10px;
-}
-
-/* PROJECTS */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  transition: transform 0.25s, border-color 0.25s;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--blue);
-}
-
-.project-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-}
-
-.project-card h3 {
-  margin-bottom: 10px;
-}
-
-.project-card p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.project-card .tags {
-  color: #60b5ff;
-  margin: 15px 0;
-}
-
-.project-card a {
-  display: inline-block;
-  color: #60b5ff;
-  margin-top: 8px;
-}
-
-/* CONTACT */
-.contact form {
-  display: grid;
-  gap: 12px;
-  max-width: 550px;
-  margin-top: 25px;
-}
-
-.contact label {
-  font-weight: bold;
-}
-
-.contact input,
-.contact textarea {
-  width: 100%;
-  padding: 13px;
-  color: white;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  outline: none;
-}
-
-.contact input:focus,
-.contact textarea:focus {
-  border-color: var(--blue);
-}
-
-.contact textarea {
-  resize: vertical;
-}
-
-.contact form button {
-  justify-self: start;
-}
-
-#formStatus {
-  color: #8bd8a8;
-  margin-top: 15px;
-}
-
-/* FOOTER */
-footer {
-  padding: 35px 8%;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  background: #091526;
-}
-
-footer p {
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 8px;
-}
-
-/* TABLET AND PHONE */
-@media (max-width: 850px) {
-  .navbar {
-    padding: 14px 5%;
-  }
-
-  .navbar nav {
-    gap: 13px;
-  }
-
-  .hero, .section {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    flex-wrap: wrap;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .navbar nav {
-    display: none;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 0;
-  }
-
-  .navbar nav.open {
-    display: flex;
-  }
-
-  .navbar nav a {
-    padding: 10px 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 30px;
-    padding-top: 45px;
-    padding-bottom: 45px;
-  }
-
-  .hero-text > p:not(.welcome) {
-    margin: auto;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-image img {
-    max-width: 270px;
-    height: 310px;
-  }
-
-  .section {
-    padding-top: 55px;
-    padding-bottom: 55px;
-  }
-
-  .section h2 {
-    font-size: 29px;
-  }
-
-  .skills-grid,
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
-    
-.contact-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px;
-  background: #101e31;
-  border: 1px solid #263950;
-  border-radius: 12px;
-  color: #f1f5f9;
-  transition: 0.3s;
-  overflow-wrap: anywhere;
-}
-
-.contact-item:hover {
-  border-color: #1685ff;
-  transform: translateY(-4px);
-}
-
-.contact-item > span {
-  font-size: 25px;
-}
-
-.contact-item h3 {
-  font-size: 16px;
-}
-
-.contact-item p {
-  color: #a9b7ca;
-  font-size: 13px;
-}
-
-@media (max-width: 600px) {
-  .contact-links {
-    grid-template-columns: 1fr;
-  }
-}
-    #skills {
-  padding: 60px 20px;
-}
-
-#skills h2 {
-  font-size: 2rem;
-  color: #fff;
-  margin-bottom: 24px;
-}
-
-#skills h2 span {
-  color: #1e88ff;
-}
-
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.skill-tag {
-  padding: 10px 18px;
-  border: 1px solid #1e88ff;
-  border-radius: 999px;
-  background: rgba(30, 136, 255, 0.1);
-  color: #fff;
-  font-size: 1rem;
-}
-
-.skills-note {
-  margin-top: 24px;
-  color: #9aa7bd;
-    }
-
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header class="navbar">
-    <a href="#home" class="logo">Tigistu<span>.</span></a>
+  <!-- NAVBAR -->
+  <header class="header">
+    <nav class="navbar container">
 
-    <button class="menu-btn" id="menuBtn"
-      aria-label="Toggle navigation" aria-expanded="false">
-      ☰
-    </button>
+      <a href="#home" class="logo">
+        TIGISTU<span>.</span>DEV
+      </a>
 
-    <nav id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+      <button class="menu-btn" id="menuBtn"
+        aria-label="Open navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact" class="nav-contact">Contact Me</a></li>
+      </ul>
+
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-text">
-        <p class="welcome">WELCOME TO MY PORTFOLIO</p>
-        <h1>Hello, I'm <span>Tigistu Mamo</span></h1>
-        <h2>Web Developer</h2>
-        <p>
-          I build responsive websites and useful digital
-          experiences using modern web technologies.
+
+    <!-- HERO SECTION -->
+    <section class="hero container" id="home">
+
+      <div class="hero-content">
+
+        <p class="small-heading">
+          HELLO, WELCOME TO MY PORTFOLIO
         </p>
+
+        <h1>
+          I'm <span>Tigistu Mamo</span>
+        </h1>
+
+        <h2>
+          Freelance Web Developer
+        </h2>
+
+        <p class="hero-description">
+          I create modern, responsive and user-friendly
+          websites that help businesses build their online
+          presence and grow.
+        </p>
+
         <div class="hero-buttons">
-          <a href="#projects" class="btn">View My Work →</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
+          <a href="#projects" class="btn primary">
+            Explore My Work
+          </a>
+
+          <a href="#contact" class="btn secondary">
+            Hire Me
+          </a>
         </div>
+
+        <div class="availability">
+          <span class="online-dot"></span>
+          Available for freelance projects
+        </div>
+
       </div>
 
       <div class="hero-image">
-        <img src="profile.jpg" alt="Portrait of Tigistu">
+        <div class="image-glow"></div>
+
+        <img
+          src="profile.jpg"
+          alt="Tigistu Mamo - Web Developer"
+          class="profile-photo"
+        >
+
+        <div class="image-label">
+          <span>💻</span>
+          <div>
+            <strong>Web Developer</strong>
+            <small>Building digital experiences</small>
+          </div>
+        </div>
+
       </div>
+
     </section>
 
-    <section class="section about" id="about">
-      <p class="section-label">GET TO KNOW ME</p>
-      <h2>About <span>Me</span></h2>
-      <p>
-        I'm Tigistu Mamo, a web developer who loves turning ideas into clean, easy-to-use websites. I build with HTML, CSS, and JavaScript, and I focus on making sites that look good and work well on any device.
-I'm always learning and improving by building real projects, like an electronics shop, a calculator, and a to-do list. Each one has taught me something new about structure, design, and problem solving.
-I'm looking to build websites for small businesses and people who need a simple, professional online presence. If you have an idea, I'd love to help bring it to life.
-      </p>
-    </section>
-    <section id="skills">
-  <h2>My <span>Skills</span></h2>
+    <!-- ABOUT -->
+    <section class="section container" id="about">
 
-  <div class="skills-grid">
-    <span class="skill-tag">HTML</span>
-    <span class="skill-tag">CSS</span>
-    <span class="skill-tag">JavaScript</span>
-    <span class="skill-tag">Responsive Design</span>
-    <span class="skill-tag">Git & GitHub</span>
-    <span class="skill-tag">GitHub Pages</span>
-  </div>
-
-  <p class="skills-note">Currently learning: React and backend basics.</p>
-    </section>
-    <section class="section" id="projects">
-      <p class="section-label">SOME OF MY WORK</p>
-      <h2>My <span>Projects</span></h2>
-
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="project-icon">🛒</div>
-          <h3>Electronics Shop</h3>
-          <p>A responsive online shop concept for electronics products.</p>
-          <p class="tags">HTML · CSS · JavaScript</p>
-          <a href="#contact"><a href="Electronics.html">Ask about this project →</a>
-          </a>
-        </article>
-
-        <article class="project-card">
-          <div class="project-icon">🧮</div>
-          <h3>JavaScript Calculator</h3>
-          <p>A calculator project to practice functions and calculations.</p>
-          <p class="tags">HTML · CSS · JavaScript</p>
-          <a href="#contact">
-            <a href="Calcuter.html">Ask about this project →</a>
-          </a>
-        </article>
-
-        <article class="project-card">
-          <div class="project-icon">✅</div>
-          <h3>To-Do List</h3>
-          <p>A task manager concept for organizing daily activities.</p>
-          <p class="tags">JavaScript · LocalStorage</p>
-          <a href="#contact">
-            <a href="To-do-list.html">Ask about this project →</a>
-          </a>
-        </article>
+      <div class="section-heading">
+        <p class="small-heading">GET TO KNOW ME</p>
+        <h2>About <span>Me</span></h2>
       </div>
-      
+
+      <div class="about-content">
+
+        <div class="about-card">
+          <div class="about-icon">👨‍💻</div>
+          <h3>Who I Am</h3>
+
+          <p>
+            My name is Tigistu Mamo. I am a passionate
+            beginner freelance web developer who enjoys
+            building websites and learning new technologies.
+          </p>
+
+          <p>
+            I focus on creating clean designs, responsive
+            layouts and useful website experiences.
+            My goal is to help individuals and businesses
+            establish a professional online presence.
+          </p>
+
+        </div>
+
+        <div class="about-stats">
+
+          <div class="stat-card">
+            <h3>3+</h3>
+            <p>Completed Projects</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>3</h3>
+            <p>Core Technologies</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>100%</h3>
+            <p>Learning Commitment</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>24/7</h3>
+            <p>Online Portfolio</p>
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <section class="section contact" id="contact">
-      
-      <p class="section-label">LET'S WORK TOGETHER</p>
-      <h2>Contact <span>Me</span></h2>
-      <p>Have a website idea or project? Send me a message.</p>
-      
-      <form id="contactForm">
-        <label for="name">Your name</label>
-        <input id="name" type="text" placeholder="Enter your name" required>
+    <!-- SKILLS -->
+    <section class="section skills-section" id="skills">
 
-        <label for="email">Your email</label>
-        <input id="email" type="email" placeholder="Enter your email" required>
+      <div class="container">
 
-        <label for="message">Your message</label>
-        <textarea id="message" rows="5"
-          placeholder="Tell me about your project" required></textarea>
+        <div class="section-heading">
+          <p class="small-heading">WHAT I KNOW</p>
+          <h2>My <span>Skills</span></h2>
+        </div>
 
-        <button class="btn" type="submit">Send via Email →</button>
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <h3>HTML5</h3>
+            <p>Building website structure and content.</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3>CSS3</h3>
+            <p>Creating beautiful and responsive designs.</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">⚡</div>
+            <h3>JavaScript</h3>
+            <p>Adding interactive website functionality.</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3>Responsive Design</h3>
+            <p>Websites that work on phones and computers.</p>
+          </div>
+          
+<div class="skill-card">
+  <div class="skill-icon">🔧</div>
+  <h3>Git</h3>
+  <p>Version control and tracking code changes.</p>
+</div>
+
+<div class="skill-card">
+  <div class="skill-icon">🐙</div>
+  <h3>GitHub</h3>
+  <p>Hosting projects and managing source code.</p>
+</div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section container" id="projects">
+
+      <div class="section-heading">
+        <p class="small-heading">MY RECENT WORK</p>
+        <h2>Featured <span>Projects</span></h2>
+
+        <p class="section-description">
+          Here are three projects I have built using
+          HTML, CSS and JavaScript.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <article class="project-card">
+
+          <div class="project-preview electronics">
+            <div class="preview-icon">🛒</div>
+            <h3>TECHZONE</h3>
+            <p>ELECTRONICS SHOP</p>
+          </div>
+
+          <div class="project-info">
+            <span class="project-category">E-COMMERCE WEBSITE</span>
+
+            <h3>TechZone Electronics Shop</h3>
+
+            <p>
+              An electronics shopping website featuring
+              products, search, category filters and
+              shopping cart functionality.
+            </p>
+
+            <div class="tech-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+
+            <div class="project-links">
+              <a href="Electronics.html" class="project-demo">
+                Live Demo ↗
+              </a>
+
+              <a href="https://tigistumamo606-spec.github.io/my-portfolio/" class="project-code">
+                Source Code ↗
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="project-card">
+
+          <div class="project-preview calculator">
+            <div class="preview-icon">🧮</div>
+            <h3>SMART CALCULATOR</h3>
+            <p>CALCULATE WITH EASE</p>
+          </div>
+
+          <div class="project-info">
+            <span class="project-category">WEB APPLICATION</span>
+
+            <h3>Smart Calculator</h3>
+
+            <p>
+              A modern calculator with interactive
+              buttons, mathematical operations and
+              calculation history.
+            </p>
+
+            <div class="tech-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+
+            <div class="project-links">
+              <a href="Calculator.html" class="project-demo">
+                Live Demo ↗
+              </a>
+
+              <a href="https://tigistumamo606-spec.github.io/my-portfolio/" class="project-code">
+                Source Code ↗
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="project-card">
+
+          <div class="project-preview todo">
+            <div class="preview-icon">✅</div>
+            <h3>MY TASKS</h3>
+            <p>ORGANIZE YOUR DAY</p>
+          </div>
+
+          <div class="project-info">
+            <span class="project-category">PRODUCTIVITY APP</span>
+
+            <h3>Advanced To-Do List</h3>
+
+            <p>
+              A task management application that helps
+              users organize daily activities and
+              manage their tasks.
+            </p>
+
+            <div class="tech-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+
+            <div class="project-links">
+              <a href="To-do-list.html" class="project-demo">
+                Live Demo ↗
+              </a>
+
+              <a href="https://tigistumamo606-spec.github.io/my-portfolio/" class="project-code">
+                Source Code ↗
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services-section" id="services">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <p class="small-heading">HOW I CAN HELP YOU</p>
+          <h2>My <span>Services</span></h2>
+        </div>
+
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-icon">🌍</div>
+            <h3>Business Websites</h3>
+            <p>
+              Professional websites for small businesses
+              and personal brands.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Responsive Design</h3>
+            <p>
+              Mobile-friendly websites that look good
+              on every screen.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🚀</div>
+            <h3>Landing Pages</h3>
+            <p>
+              Modern landing pages designed to
+              present products and services.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">🛠️</div>
+            <h3>Website Redesign</h3>
+            <p>
+              Improving website layouts, appearance
+              and user experience.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section container" id="contact">
+
+      <div class="section-heading">
+        <p class="small-heading">LET'S WORK TOGETHER</p>
+        <h2>Contact <span>Me</span></h2>
+
+        <p class="section-description">
+          Have a website project? Let's discuss
+          how I can help your business.
+        </p>
+      </div>
+
+      <div class="contact-card">
+
+        <h3>Let's build something great!</h3>
+
+        <p>
+          I am interested in freelance website
+          development opportunities.
+          Contact me through any of these platforms.
+        </p>
+
         <div class="contact-links">
 
-  <a href="mailto:tigistumamo606@gmail.com" class="contact-item">
-    <span>✉️</span>
-    <div>
-      <h3>Email Me</h3>
-      <p>tigistumamo606@gmail.com</p>
-    </div>
-  </a>
+          <a href="mailto:tigistumamo606@gmail.com"
+             class="contact-item">
+            <span>📧</span>
+            <div>
+              <strong>Email</strong>
+              <small>Send me an email</small>
+            </div>
+          </a>
 
-  <a href="https://wa.me/251976264514" class="contact-item"
-     target="_blank" rel="noopener noreferrer">
-    <span>💬</span>
-    <div>
-      <h3>WhatsApp</h3>
-      <p>Chat with me</p>
-    </div>
-  </a>
+          <a href="https://wa.me/251976264514"
+             target="_blank" rel="noopener"
+             class="contact-item">
+            <span>💬</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <small>Chat with me</small>
+            </div>
+          </a>
 
-  <a href="https://t.me/tigistu32" class="contact-item"
-     target="_blank" rel="noopener noreferrer">
-    <span>✈️</span>
-    <div>
-      <h3>Telegram</h3>
-      <p>Message me</p>
-    </div>
-  </a>
+          <a href="https://t.me/tigistu32"
+             target="_blank" rel="noopener"
+             class="contact-item">
+            <span>✈️</span>
+            <div>
+              <strong>Telegram</strong>
+              <small>Message me</small>
+            </div>
+          </a>
 
-</div>
-      </form>
-      <p id="formStatus" role="status"></p>
-      
+        </div>
+
+        <a href="mailto:tigistumamo606@gmail.com"
+           class="btn primary contact-button">
+          Hire Me Today →
+        </a>
+
+      </div>
+
     </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+      <div class="container">
+
+        <a href="#home" class="logo">
+          TIGISTU<span>.</span>DEV
+        </a>
+
+        <p>
+          Building modern websites with creativity
+          and passion.
+        </p>
+
+        <p class="copyright">
+          © <span id="year"></span> Tigistu Mamo.
+          All Rights Reserved.
+        </p>
+
+      </div>
+
+    </footer>
+
   </main>
 
-  <footer>
-    <a href="#home" class="logo">Tigistu<span>.</span></a>
-    <p> I develope website </p>
-    <p>© <span id="year"></span> Tigistu. All rights reserved.</p>
-  </footer>
+  <script src="script.js"></script>
 
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-// Mobile navigation
-menuBtn.addEventListener("click", function () {
-  const isOpen = navLinks.classList.toggle("open");
-
-  menuBtn.setAttribute("aria-expanded", isOpen);
-  menuBtn.textContent = isOpen ? "✕" : "☰";
-});
-
-// Close menu after clicking a link
-navLinks.querySelectorAll("a").forEach(function (link) {
-  link.addEventListener("click", function () {
-    navLinks.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded", "false");
-    menuBtn.textContent = "☰";
-  });
-});
-
-// Automatically update copyright year
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-
-// Contact form
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
-
-contactForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  if (!name || !email || !message) {
-    formStatus.textContent = "Please fill in every field.";
-    return;
-  }
-
-  // Replace this with your own email address.
-  const myEmail = "your-email@example.com";
-
-  const subject = encodeURIComponent(
-    "Portfolio contact from " + name
-  );
-
-  const body = encodeURIComponent(
-    "Name: " + name +
-    "\nEmail: " + email +
-    "\n\nMessage:\n" + message
-  );
-
-  formStatus.textContent =
-    "Opening your email app. Send the message there to complete delivery.";
-
-  window.location.href =
-    "mailto:" + myEmail +
-    "?subject=" + subject +
-    "&body=" + body;
-});
-
-  </script>
 </body>
 </html>
