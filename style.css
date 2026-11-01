@@ -364,19 +364,36 @@ span {
 
 /* PROJECTS */
 
+/* PROJECT SECTION */
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 40px;
 }
 
+/* PROJECT CARD */
+
 .project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 15px;
+  background: #101a2d;
+  border: 1px solid #243653;
+  border-radius: 18px;
   overflow: hidden;
-  transition: 0.3s;
+  transition: transform 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
 }
+
+.project-card:hover {
+  transform: translateY(-9px);
+  border-color: #3b82f6;
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+}
+
+/* PROJECT PREVIEW */
 
 .project-preview {
   min-height: 190px;
@@ -384,84 +401,172 @@ span {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #102c5c, #164e9a);
   text-align: center;
-}
-
-.calculator {
-  background: linear-gradient(135deg, #16253b, #334155);
-}
-
-.todo {
-  background: linear-gradient(135deg, #064e3b, #0f766e);
-}
-
-.preview-icon {
-  font-size: 45px;
-  margin-bottom: 8px;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-preview h3 {
-  color: white;
-  font-size: 21px;
+  color: #ffffff;
+  font-size: 23px;
   letter-spacing: 2px;
+  margin: 12px 0 5px;
 }
 
 .project-preview p {
   color: #cbd5e1;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 2px;
 }
 
+.preview-icon {
+  font-size: 45px;
+  transition: transform 0.35s ease;
+}
+
+.project-card:hover .preview-icon {
+  transform: scale(1.2);
+}
+
+/* DIFFERENT PROJECT COLORS */
+
+.electronics {
+  background: linear-gradient(135deg, #102c5c, #0876bd);
+}
+
+.calculator {
+  background: linear-gradient(135deg, #30205e, #7136b9);
+}
+
+.todo {
+  background: linear-gradient(135deg, #075b48, #0c9b77);
+}
+
+/* PROJECT INFORMATION */
+
 .project-info {
-  padding: 22px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-category {
-  color: var(--light-blue);
-  font-size: 10px;
+  color: #60a5fa;
+  font-size: 11px;
+  font-weight: 700;
   letter-spacing: 1.5px;
 }
 
 .project-info h3 {
+  color: #ffffff;
   font-size: 20px;
-  margin: 9px 0;
+  margin: 13px 0;
 }
 
 .project-info p {
-  color: var(--muted);
-  font-size: 13px;
-  min-height: 90px;
+  color: #aab8ca;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
+
+/* TECHNOLOGY TAGS */
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin: 18px 0;
+  gap: 8px;
+  margin-bottom: 25px;
 }
 
 .tech-tags span {
-  background: #1e3a63;
-  color: #bfdbfe;
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: #1c2c46;
+  color: #93c5fd;
+  border: 1px solid #2d4568;
+  padding: 7px 12px;
+  border-radius: 20px;
   font-size: 11px;
+  font-weight: 600;
 }
+
+/* PROJECT BUTTONS */
 
 .project-links {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
-  border-top: 1px solid var(--border);
-  padding-top: 15px;
+  margin-top: auto;
 }
 
 .project-links a {
-  color: var(--light-blue);
-  font-size: 12px;
-  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
+
+.project-demo {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.project-demo:hover {
+  background: #1d4ed8;
+  transform: translateY(-3px);
+}
+
+.project-code {
+  background: transparent;
+  color: #93c5fd;
+  border: 1px solid #3b82f6;
+}
+
+.project-code:hover {
+  background: #1e3a5f;
+  transform: translateY(-3px);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .project-preview {
+    min-height: 170px;
+  }
+
+  .project-info {
+    padding: 20px;
+  }
+
+  .project-info h3 {
+    font-size: 19px;
+  }
+
+  .project-links a {
+    font-size: 12px;
+    padding: 11px 5px;
+  }
+}
+
+
+
 
 .project-links a:hover {
   color: white;
